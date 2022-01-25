@@ -69,7 +69,7 @@ jobs:
         PKGN: ${{ 'xray-plugin' }}
       run: |
         REP=$(basename "${REPF}")
-        mv -vf ../src "package/${PKGN}"
+        mv -vf ../src "package/${REP}"
         
     - name: Load custom configuration
       env:
@@ -84,7 +84,7 @@ jobs:
     - name: Compile Package
       env:
         DEBIAN_FRONTEND: noninteractive
-        PKGN: ${{ 'xray-plugin' }}
+        PKGN: ${{ 'xray-plugin-op' }}
       run: |
         make package/${PKGN}/compile -j$(nproc) V=s
         mkdir ../bin
