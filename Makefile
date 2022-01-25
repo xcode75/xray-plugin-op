@@ -3,10 +3,18 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-plugin
 PKG_VERSION:=1.5.2
+PKG_RELEASE:=$(SUBTARGET)
 
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/xcode75/xray-pluginn.git
+PKG_MIRROR_HASH:=skip
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=a4287bcc958754b9aae04263430d70a4914c0159
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/xcode75/xray-pluginn/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=61ee038220ef50e33340e67a6073e47a8c31d29a15ab3c7741828aeba801670c
+
+PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_PARALLEL:=1
+GO_PKG_BUILD_PKG:=$$(GO_PKG)
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
@@ -20,7 +28,7 @@ PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-GO_PKG:=github.com/xcode75/xray-plugin
+GO_PKG:=github.com/xcode75/xray-pluginn
 GO_PKG_LDFLAGS:=-s -w
 
 include $(INCLUDE_DIR)/package.mk
@@ -47,7 +55,6 @@ define Package/xray-plugin
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
   TITLE:=SIP003 plugin for Shadowsocks, based on Xray
-  URL:=https://github.com/xcode75/xray-plugin
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef
 
