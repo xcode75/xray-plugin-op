@@ -6,7 +6,7 @@ PKG_VERSION:=1.5.2
 PKG_RELEASE:=$(SUBTARGET)
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/xcode75/xray-pluginn.git
+PKG_SOURCE_URL:=https://github.com/xcode75/xray-plugin.git
 PKG_MIRROR_HASH:=291913a3d29ad73f83d7ba88472fe8468ba7774ce189c022e8e7e3504c0209a1
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=5c4fdb3cce27222a13eac6bfc732e50f0c431e15
@@ -28,7 +28,7 @@ PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-GO_PKG:=github.com/xcode75/xray-pluginn
+GO_PKG:=github.com/xcode75/xray-plugin
 GO_PKG_LDFLAGS:=-s -w
 
 include $(INCLUDE_DIR)/package.mk
