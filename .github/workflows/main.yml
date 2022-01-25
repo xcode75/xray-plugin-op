@@ -66,7 +66,6 @@ jobs:
     - name: Prepare targets
       env:
         REPF: ${{ github.repository }}
-        PKGN: ${{ 'xray-plugin' }}
       run: |
         REP=$(basename "${REPF}")
         mv -vf ../src "package/${REP}"
@@ -84,7 +83,7 @@ jobs:
     - name: Compile Package
       env:
         DEBIAN_FRONTEND: noninteractive
-        PKGN: ${{ 'xray-plugin-op' }}
+        PKGN: ${{ 'xray-plugin' }}
       run: |
         make package/${PKGN}/compile -j$(nproc) V=s
         mkdir ../bin
