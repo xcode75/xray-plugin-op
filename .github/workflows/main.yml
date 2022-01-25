@@ -66,18 +66,22 @@ jobs:
     - name: Prepare targets
       env:
         REPF: ${{ github.repository }}
+        PKGN: ${{ 'xray-plugin' }}
       run: |
         REP=$(basename "${REPF}")
-        mv -vf ../src "package/${REP}"
+        mv -vf ../src "package/${PKGN}"
         
     - name: Load custom configuration
       env:
         DEBIAN_FRONTEND: noninteractive
         CONFIG_FILE: '.config'
         REPF: ${{ github.repository }}
+        PKGN: ${{ 'xray-plugin' }}
       run: |
         REP=$(basename "${REPF}")
-        [ -e "package/${REP}/${CONFIG_FILE}" ] && mv "${CONFIG}" .config
+        ./scripts/feeds update -a
+        ./scripts/feeds install golang c-ares libev libopenssl libsodium mbedtls pcre libncursesw6
+        [ -e "package/${PKGN}/${CONFIG_FILE}" ] && mv "${CONFIG}" .config
         make defconfig
            
     - name: Compile Package
