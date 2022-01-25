@@ -3,7 +3,6 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-plugin
 PKG_VERSION:=1.5.2
-PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/xcode75/xray-pluginn/tar.gz/v$(PKG_VERSION)?
