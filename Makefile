@@ -2,11 +2,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-plugin
-PKG_VERSION:=v1.5.2
+PKG_VERSION:=1.5.2
 PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/xcode75/xray-plugin/tar.gz/$(PKG_VERSION)?
+PKG_SOURCE_URL:=https://codeload.github.com/xcode75/xray-plugin/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=291913a3d29ad73f83d7ba88472fe8468ba7774ce189c022e8e7e3504c0209a1
 
 PKG_LICENSE:=MIT
