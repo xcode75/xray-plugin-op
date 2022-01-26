@@ -1,24 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# Copyright (C) 2021 ImmortalWrt.org
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-plugin
 PKG_VERSION:=1.5.2
-PKG_RELEASE:=$(SUBTARGET)
+PKG_RELEASE:=$(AUTORELEASE)
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/xcode75/xray-plugin.git
-PKG_MIRROR_HASH:=skip
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=5c4fdb3cce27222a13eac6bfc732e50f0c431e15
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-
-PKG_BUILD_DEPENDS:=golang/host
-PKG_BUILD_PARALLEL:=1
-GO_PKG_BUILD_PKG:=$$(GO_PKG)
+PKG_SOURCE_URL:=https://codeload.github.com/teddysun/xray-plugin/tar.gz/v$(PKG_VERSION)?
+PKG_HASH:=4a8516b26c08f97ba41b1585fb7603ec194e510a776c8b0d26577e874665afe2
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=xcode75
+PKG_MAINTAINER:=Tianling Shen <cnsztl@project-openwrt.eu.org>
 
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_XRAY_PLUGIN_COMPRESS_GOPROXY \
@@ -28,7 +24,7 @@ PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-GO_PKG:=github.com/xcode75/xray-plugin
+GO_PKG:=github.com/teddysun/xray-plugin
 GO_PKG_LDFLAGS:=-s -w
 
 include $(INCLUDE_DIR)/package.mk
@@ -55,6 +51,7 @@ define Package/xray-plugin
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
   TITLE:=SIP003 plugin for Shadowsocks, based on Xray
+  URL:=https://github.com/teddysun/xray-plugin
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef
 
